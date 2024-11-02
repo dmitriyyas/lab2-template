@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BonusService;
+namespace BonusService.Models;
 
 public partial class PrivilegeHistory
 {

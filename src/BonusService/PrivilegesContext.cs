@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BonusService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BonusService;

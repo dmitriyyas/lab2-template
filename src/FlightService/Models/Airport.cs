@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace FlightService;
+namespace FlightService.Models;
 
 public partial class Airport
 {

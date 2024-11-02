@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FlightService.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlightService;
