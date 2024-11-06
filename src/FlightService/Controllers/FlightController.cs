@@ -18,20 +18,20 @@ public class FlightController(FlightsContext context) : ControllerBase
     }
 
     [HttpGet("api/v1/flights")]
-    public async Task<IActionResult> GetFlights([FromQuery] List<string>? numbers, [FromQuery] int? page = null, [FromQuery] int? size = null)
+    public async Task<IActionResult> GetFlights([FromQuery] List<string>? numbers = null, [FromQuery] int? page = null, [FromQuery] int? size = null)
     {
         IQueryable<Flight> query = _context.Flights;
 
         if (page is not null && size is not null)
             query = query.Skip((page.Value - 1) * size.Value).Take(size.Value);
 
-        if (numbers is not null && numbers.Count > 0)
+        if (numbers is not null)
             query = query.Where(f => numbers.Contains(f.FlightNumber));
 
         var totalElements = await query.CountAsync();
         var flights = await query.Include(f => f.FromAirport).Include(f => f.ToAirport).ToListAsync();
 
-        var result =  new FlightsDto(page ?? 1,
+        var result = new FlightsDto(page ?? 1,
             size ?? totalElements,
             totalElements,
             flights.Select(f => ToDto(f)).ToList());

@@ -37,7 +37,8 @@ jobs:
           dotnet publish ./src/TicketService/TicketService.csproj -c Release
           dotnet publish ./src/GatewayService/GatewayService.csproj -c Release
 
-      # TODO run unit tests
+      - name: Run Tests
+        run: dotnet test ./src
 
       - name: Build images
         timeout-minutes: 10
